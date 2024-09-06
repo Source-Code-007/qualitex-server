@@ -1,5 +1,6 @@
 type TWorkPermit = {
   lubaNr: string;
+  barcodeText: string;
   tootajaTeave: {
     nimi: string;
     isaNimi: string;

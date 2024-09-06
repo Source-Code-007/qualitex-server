@@ -2,7 +2,7 @@ import { z } from "zod";
 
 // Zod validation schema for work permit creation
 const createWorkPermitZodValidation = z.object({
-  lubaNr: z.string(),
+  barcodeText: z.string(),
   tootajaTeave: z.object({
     nimi: z.string(),
     isaNimi: z.string(),
@@ -29,29 +29,37 @@ const createWorkPermitZodValidation = z.object({
 
 // Zod validation schema for work permit updates (all fields are optional)
 const updateWorkPermitZodValidation = z.object({
-  lubaNr: z.string().optional(),
-  tootajaTeave: z.object({
-    nimi: z.string().optional(),
-    isaNimi: z.string().optional(),
-    emainimi: z.string().optional(),
-    sunnipaev: z.string().optional(),
-    passiNumber: z.string().optional(),
-    pusivAadress: z.string().optional(),
-    ePost: z.string().optional(),
-  }).optional(),
-  tooandmiseDetailid: z.object({
-    ametikoht: z.string().optional(),
-    tooKirjeldus: z.string().optional(),
-    contractStartDate: z.string().optional(),
-    contractEndDate: z.string().optional(),
-    palkJaKasu: z.object({
-      kuuPalk: z.string().optional(),
-    }).optional(),
-  }).optional(),
-  tooloaDetailid: z.object({
-    workPermitStartDate: z.string().optional(),
-    workPermitEndDate: z.string().optional(),
-  }).optional(),
+  barcodeText: z.string().optional(),
+  tootajaTeave: z
+    .object({
+      nimi: z.string().optional(),
+      isaNimi: z.string().optional(),
+      emainimi: z.string().optional(),
+      sunnipaev: z.string().optional(),
+      passiNumber: z.string().optional(),
+      pusivAadress: z.string().optional(),
+      ePost: z.string().optional(),
+    })
+    .optional(),
+  tooandmiseDetailid: z
+    .object({
+      ametikoht: z.string().optional(),
+      tooKirjeldus: z.string().optional(),
+      contractStartDate: z.string().optional(),
+      contractEndDate: z.string().optional(),
+      palkJaKasu: z
+        .object({
+          kuuPalk: z.string().optional(),
+        })
+        .optional(),
+    })
+    .optional(),
+  tooloaDetailid: z
+    .object({
+      workPermitStartDate: z.string().optional(),
+      workPermitEndDate: z.string().optional(),
+    })
+    .optional(),
 });
 
 // Exporting the validations

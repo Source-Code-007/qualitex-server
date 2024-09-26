@@ -14,7 +14,9 @@ const createWorkPermitZodValidation = z.object({
   }),
   tooandmiseDetailid: z.object({
     ametikoht: z.string(),
-    tooKirjeldus: z.string(),
+    tooKirjeldus: z
+      .string()
+      .max(790, { message: "790 characters max for tooKirjeldus" }),
     contractStartDate: z.string(),
     contractEndDate: z.string(),
     palkJaKasu: z.object({
@@ -44,7 +46,10 @@ const updateWorkPermitZodValidation = z.object({
   tooandmiseDetailid: z
     .object({
       ametikoht: z.string().optional(),
-      tooKirjeldus: z.string().optional(),
+      tooKirjeldus: z
+        .string()
+        .max(790, { message: "790 characters max for tooKirjeldus" })
+        .optional(),
       contractStartDate: z.string().optional(),
       contractEndDate: z.string().optional(),
       palkJaKasu: z
